@@ -1,4 +1,4 @@
 # chatServerEx
 chatServerEx for Android
 
-make park, jeong
+made by park, jeong
