@@ -1,20 +1,29 @@
 package com.toyed.project.chatServerEx.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.toyed.project.chatServerEx.dto.ChatRoom;
+import com.toyed.project.chatServerEx.dto.ChatService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
-@RequestMapping(path = "/")
+@RequestMapping(path = "/chat")
 public class charSvrController {
 
-    @GetMapping(value = "/login")
-    public String LoginController(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return "hello world";
+    private final ChatService chatService;
+
+    @PostMapping
+    public ChatRoom createRoom(@RequestParam String name){
+        return chatService.createRooom(name);
+    }
+
+    @GetMapping
+    public List<ChatRoom> finalAllRoom(){
+        return chatService.finalAllRoom();
     }
 
 }
